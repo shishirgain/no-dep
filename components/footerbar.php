@@ -1,0 +1,1 @@
+<div>Footer bar</div>
