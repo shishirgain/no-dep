@@ -1,28 +1,28 @@
 <?php
 namespace App\Models\Helper;
-require __DIR__ . '/../../../helper/database.php';
-
 class SQLExecutor
 {
     protected $schema;
+    protected $connection;
+
     function __construct($schema)
     {
+        $this->connection = $GLOBALS['db_connection'];
         $this->schema = $schema;
     }
     public function getShema()
     {
         return $this->schema;
     }
-    
+
     public function execute()
     {
-        global $db_connontion;
-        $connection =$db_connontion->get_connection();
-        $isSuccess = $connection->query($this->schema);
-        // if ($isSuccess === TRUE) {
-        //     echo "execution successfully";
-        // } else {
-        //     echo "Error: " . $connection->error;
-        // }
+        $isSuccess = $this->connection->query($this->schema);
+
+        if ($isSuccess) {
+            echo "execution successfully\n";
+        } else {
+            echo "Error: " . $this->connection->error;
+        }
     }
 }

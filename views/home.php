@@ -1,8 +1,8 @@
 <div>Home</div>
 <?php
-use APP\Models\User;
+use App\Models\App\User;
 
-$usersModel = new User($db_connontion->get_connection());
+$usersModel = new User($db_connection);
 $users = $usersModel->findAll();
 
 foreach($users as $user) {
