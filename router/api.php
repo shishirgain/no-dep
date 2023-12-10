@@ -3,6 +3,8 @@ use App\Controller\UserController;
 use App\Controller\CategoryController;
 use App\Controller\PostController;
 
+use App\Tools\Router;
+
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
@@ -15,6 +17,7 @@ $requestMethod = $_SERVER["REQUEST_METHOD"];
 
 // users
 if ($uri[2] === 'users') {
+    $id = null;
     if (isset($uri[3])) {
         $id = (int) $uri[3];
     }
@@ -24,19 +27,21 @@ if ($uri[2] === 'users') {
 
 // categories
 if ($uri[2] === 'categories') {
+    $id = null;
     if (isset($uri[3])) {
         $id = (int) $uri[3];
     }
-    $controller = new CategoryController($db_connontion->get_connection(), $requestMethod, $userId);
+    $controller = new CategoryController($db_connontion->get_connection(), $requestMethod, $id);
     $controller->processRequest();
 }
 
 // posts
 if ($uri[2] === 'posts') {
+    $id = null;
     if (isset($uri[3])) {
         $id = (int) $uri[3];
     }
-    $controller = new PostController($db_connontion->get_connection(), $requestMethod, $userId);
+    $controller = new PostController($db_connontion->get_connection(), $requestMethod, $id);
     $controller->processRequest();
 }
 
