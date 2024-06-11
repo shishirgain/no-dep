@@ -1,22 +1,9 @@
 <?php
-use App\Models\Helper\Path;
+use Dep\router\Router;
 
-$paths = [
-    new Path('/', '/views/home.php'),
-    new Path('/about', '/views/about.php'),
-];
-
-function route($url)
-{
-    global $paths;
-    foreach ($paths as $path) {
-        if ($url === $path->getPath()) {
-            return $path;
-        }
-    }
-    return new Path('*', '/views/Error404.php');
-}
-
-$url = $_SERVER['REQUEST_URI'];
-
-include(route($url)->getView());
+Router::get('/', function () {
+   VIEW('home');
+});
+Router::get('/about', function () {
+   VIEW('about');
+});

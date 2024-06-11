@@ -1,55 +1,26 @@
 <?php
-use App\Controller\UserController;
-use App\Controller\CategoryController;
-use App\Controller\PostController;
+use Dep\router\Router;
 
-use App\Tools\Router;
+Router::get('/api', function () {
+    JSON(['route' => 'index']);
+});
 
-header("Access-Control-Allow-Origin: *");
-header("Content-Type: application/json; charset=UTF-8");
-header("Access-Control-Allow-Methods: OPTIONS,GET,POST,PUT,DELETE");
-header("Access-Control-Max-Age: 3600");
-header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+Router::get('/api/users', function () {
+    JSON(['route' => '/users', 'params' => getPrams()]);
+});
 
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri = explode('/', $uri);
-$requestMethod = $_SERVER["REQUEST_METHOD"];
+Router::get('/api/users/{id}', function ($id) {
+    echo '/users/{id}-' . $id;
+});
 
-// users
-if ($uri[2] === 'users') {
-    $id = null;
-    if (isset($uri[3])) {
-        $id = (int) $uri[3];
-    }
-    $controller = new UserController($db_connontion->get_connection(), $requestMethod, $id);
-    $controller->processRequest();
-}
+Router::get('/api/users/show', function ($id) {
+    echo 'users-' . $id;
+});
 
-// categories
-if ($uri[2] === 'categories') {
-    $id = null;
-    if (isset($uri[3])) {
-        $id = (int) $uri[3];
-    }
-    $controller = new CategoryController($db_connontion->get_connection(), $requestMethod, $id);
-    $controller->processRequest();
-}
+Router::post('/api/users/{id}', function ($id) {
+    echo 'users-' . $id;
+});
 
-// posts
-if ($uri[2] === 'posts') {
-    $id = null;
-    if (isset($uri[3])) {
-        $id = (int) $uri[3];
-    }
-    $controller = new PostController($db_connontion->get_connection(), $requestMethod, $id);
-    $controller->processRequest();
-}
-
-// route not found
-$response['status_code_header'] = '"HTTP/1.1 404 Not Found"';
-$response['body'] = json_encode([
-    'url' =>  $_SERVER['REQUEST_URI'],
-    'message' => 'not found'
-]);
-echo $response['body'];
-exit();
+Router::get('/api/users/{id}/show/{slug}', function ($id, $slug) {
+    echo 'users-' . $id . '--' . $slug;
+});

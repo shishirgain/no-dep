@@ -1,4 +1,4 @@
 <?php
-include_once __DIR__ . "/helper/loader.php";
+include_once __DIR__ . "/boot/loader.php";
 
-require __DIR__ . "/helper/migration.php";
+require __DIR__ . "/boot/migration.php";

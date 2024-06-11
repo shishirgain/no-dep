@@ -1,4 +1,3 @@
 <?php
-include_once __DIR__ . '/helper/loader.php';
-
-include_once __DIR__.'/app/index.php';
+include_once __DIR__ . '/boot/loader.php';
+include_once __DIR__ . '/app/app.php';

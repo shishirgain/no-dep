@@ -1,3 +1,4 @@
+<?php include_once __DIR__ . "/../components/layouts/header.php"; ?>
 <div>
     <div class="text-center text-muted mt-5">
         <div>
@@ -8,3 +9,4 @@
         <a href="/">Back To Homepage</a>
     </div>
 </div>
+<?php include_once __DIR__ . "/../components/layouts/footer.php"; ?>
