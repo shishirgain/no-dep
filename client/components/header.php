@@ -10,5 +10,6 @@
 </head>
 
 <body>
+    <div class="min-vh-100 d-flex flex-column">
     <?php include_once __DIR__ . '/./navbar.php'; ?>
-    <div class="container">
+    <div class="container flex-fill">
