@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mt-4">
-                <img class="rounded-circle img-thumbnail border-warning mx-auto d-block" src="../assets/img/avatar.jpg" alt="" style="width: 100px; height: 100px;">
+                <img class="rounded-circle img-thumbnail border-warning mx-auto d-block" src="../client/assets/img/avatar.jpg" alt="" style="width: 100px; height: 100px;">
             </div>
         </div>
     </div>

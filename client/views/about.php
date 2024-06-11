@@ -1,3 +1,3 @@
-<?php include_once __DIR__ . "/../components/layouts/header.php"; ?>
+<?php include_once __DIR__ . "/../components/header.php"; ?>
 <div>About</div>
-<?php include_once __DIR__ . "/../components/layouts/footer.php"; ?>
+<?php include_once __DIR__ . "/../components/footer.php"; ?>
